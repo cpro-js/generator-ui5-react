@@ -1,6 +1,6 @@
 {
   "name": "generator-ui5-react",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Scaffold a complete React app based on Vite using UI5 Webcomponents offering a seamless Fiori Launchpad integration",
   "keywords": [
     "yeoman-generator",
