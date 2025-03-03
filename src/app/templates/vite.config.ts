@@ -1,20 +1,21 @@
 /// <reference types="vitest" />
 import { createCommonConfig } from "@cpro-js/vite-ui5-common-config";
 import { defineConfig, loadEnv, mergeConfig } from "vite";
-import { mockServerConfig } from "./mockserver.config";
+import { createMockServerConfig } from "./mockserver.config";
 import manifest from "./ui5/manifest.json";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  // load all env vars, also .local
-  process.env = { ...process.env, ...loadEnv(mode, __dirname, "") };
+  // load server settings via env vars, also .local , but don't reassign process.env to allow server reload (see https://github.com/vitejs/vite/issues/17689)
+  // .env files for vite's app-build/runtime are loaded separately by vite for prefix APP_
+  const env = { ...process.env, ...loadEnv(mode, __dirname, "") };
 
   const proxyConfig = {
-    url: process.env.BASE_URL + process.env.PROXY_PATH,
-    username: process.env.SAP_USERNAME,
-    password: process.env.SAP_PASSWORD,
+    url: env.BASE_URL + env.PROXY_PATH,
+    username: env.SAP_USERNAME,
+    password: env.SAP_PASSWORD,
     queryParams: {
-      "sap-client": process.env.SAP_CLIENT,
+      "sap-client": env.SAP_CLIENT,
     },
   };
 
@@ -26,7 +27,7 @@ export default defineConfig(({ mode }) => {
     createCommonConfig({
       appId,
       ui5Version,
-      mockServerConfig: mode === "mock" ? mockServerConfig : undefined,
+      mockServerConfig: mode === "mock" ? createMockServerConfig(env) : undefined,
       proxy: proxyConfig,
     }),
     {

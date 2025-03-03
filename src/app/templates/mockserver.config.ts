@@ -1,11 +1,7 @@
-import "dotenv/config";
-
 import { resolve } from "path";
 
 import { MockserverConfiguration } from "@sap-ux/fe-mockserver-core";
 import FileSystemLoader from "@sap-ux/fe-mockserver-core/dist/plugins/fileSystemLoader";
-
-const { APP_MAIN_SERVICE_PATH } = process.env;
 
 // @ts-ignore
 class CustomFileLoader extends FileSystemLoader.default {
@@ -18,15 +14,15 @@ class CustomFileLoader extends FileSystemLoader.default {
   }
 }
 
-export const mockServerConfig: MockserverConfiguration = {
+export const createMockServerConfig = (env: Record<string, string>): MockserverConfiguration => ({
   // @ts-ignore
   fileLoader: CustomFileLoader,
   services: [
     {
-      urlPath: APP_MAIN_SERVICE_PATH,
+      urlPath: env.APP_MAIN_SERVICE_PATH,
       metadataPath: resolve(__dirname, "src/localService/main-service.xml"),
       mockdataPath: resolve(__dirname, "src/localService/main-service"),
       watch: true,
     },
   ],
-};
+});
