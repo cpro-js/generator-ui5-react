@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.0](https://github.com/cpro-js/generator-ui5-react/compare/generator-ui5-react-v1.7.0...generator-ui5-react-v1.8.0) (2025-03-03)
+
+
+### Features
+
+* use verbatim module syntax ([c997d38](https://github.com/cpro-js/generator-ui5-react/commit/c997d3822ac59441d84356a3972575015cf1c48b))
+
+
+### Bug Fixes
+
+* bump ui5 web components - fixes HTML types ([addc3d4](https://github.com/cpro-js/generator-ui5-react/commit/addc3d4d651bdcbedb7c0cfae0f49c7a3abd7d09))
+* enables the use of pure ESM packages ([3e76045](https://github.com/cpro-js/generator-ui5-react/commit/3e760451e4b1582516cb458a4a7f850ba5d0d310))
+* env runtime types ([b6eb165](https://github.com/cpro-js/generator-ui5-react/commit/b6eb1654267f29d48f1bc66044362da7719cc062))
+* load env variables correctly / allow reload of env vars ([6ff05c9](https://github.com/cpro-js/generator-ui5-react/commit/6ff05c95219ec88e2ec264a60bec64507d0683d4))
+* use types for SAPUI5 version 1.120 ([13ef91a](https://github.com/cpro-js/generator-ui5-react/commit/13ef91ad0dcb0ad55aa708dc96635649339525fd))
+
 ## [1.7.0](https://github.com/cpro-js/generator-ui5-react/compare/generator-ui5-react-v1.6.0...generator-ui5-react-v1.7.0) (2025-01-14)
 
 
